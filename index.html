@@ -1,59 +1,87 @@
 
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+      <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
+    
+     <script
+      async
+      src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
+    ></script>
+    
+ <script type="module">
+      import * as THREE from 'three';
+      import { MindARThree } from 'mindar-image-three';
+      const mindarThree = new MindARThree({
+	container: document.querySelector("#container"),
+	imageTargetSrc: "https://cdn.glitch.global/622e7010-5629-44bd-ab9b-fdc18c327eac/targets%20(2).mind?v=1677803898217"
+      });
+      const {renderer, scene, camera} = mindarThree;
+      const anchor = mindarThree.addAnchor(0);
+      const geometry = new THREE.PlaneGeometry(2, 2);
+      const material = new THREE.MeshBasicMaterial( {color: 0x00ffff, transparent: true, opacity: 0.5} );
+      const plane = new THREE.Mesh( geometry, material );
+      anchor.group.add(plane);
+      
+    </script>
+    <style>
+      body {
+	margin: 0;
+      }
+      #container {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+      }
+      #control {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+      }
+    </style>
+    
   </head>
-  <script src='https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js'></script>
-
-<style>
-  .arjs-loader {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .arjs-loader div {
-    text-align: center;
-    font-size: 1.25em;
-    color: white;
-  }
-</style>
-
-<!-- rawgithack development URL -->
-<!--<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>-->
-<script src="../../../../aframe/build/aframe-ar-nft.js"></script>
+  <body>
+    
+    <script type="module">
+      import * as THREE from "three";
+      import { MindARThree } from "mindar-image-three";
+    </script>
+    
+    <div class="arjs-loader">
+      <div>ZICA AR...</div>
+    </div>
+    
+    
+    <a-scene mindar-image="imageTargetSrc:https://cdn.glitch.global/622e7010-5629-44bd-ab9b-fdc18c327eac/targets%20(2).mind?v=1677803898217" 
+            
+             
+             vr-mode-ui="enabled: false" 
+             device-orientation-permission-ui="enabled: false" >
+      
+      <a-assets>
+       
+        <a-asset-item id="avatarModel" src="https://cdn.glitch.global/622e7010-5629-44bd-ab9b-fdc18c327eac/BicAR.gltf?v=1677803565608"></a-asset-item>
+      </a-assets>
 
 
-<body style="margin : 0px; overflow: hidden;">
-   <!-- minimal loader shown until image descriptors are loaded -->
-  <div class="arjs-loader">
-    <div>Loading, please wait...</div>
-  </div>
-    <a-scene
-        vr-mode-ui="enabled: false;"
-        renderer="logarithmicDepthBuffer: true; precision: medium;"
-        embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- use rawgithack to retrieve the correct url for nft marker (see 'pinball' below) -->
-        <a-nft
-            type="nft" url="./aframe/examples/image-tracking/nft/trex/trex-image/trex"
-            smooth='true' smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
-            <a-entity
-                gltf-model='./trex/scene.gltf'
-                scale="5 5 5"
-                position="150 300 -100"
-                >
-            </a-entity>
-        </a-nft>
-		<a-entity camera></a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        
+      
+        <a-gltf-model rotation="90 0 0 " 
+                      position="0 0 0.1" 
+                      scale="10 10 10" 
+                      src="#avatarModel" 
+                      ></a-gltf-model>
+        
+      </a-entity>
+        <a-entity camera> </a-entity>
     </a-scene>
-</body>
+  </body>
+</html>
