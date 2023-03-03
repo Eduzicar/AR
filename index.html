@@ -19,7 +19,7 @@
       });
       const {renderer, scene, camera} = mindarThree;
       const anchor = mindarThree.addAnchor(0);
-      const geometry = new THREE.PlaneGeometry(2, 2);
+      const geometry = new THREE.PlaneGeometry(1.5, 1.5);
       const material = new THREE.MeshBasicMaterial( {color: 0x00ffff, transparent: true, opacity: 0.5} );
       const plane = new THREE.Mesh( geometry, material );
       anchor.group.add(plane);
@@ -76,7 +76,7 @@
       
         <a-gltf-model rotation="90 0 0 " 
                       position="0 0 0.1" 
-                      scale="10 10 10" 
+                      scale="15 15 15" 
                       src="#avatarModel" 
                       ></a-gltf-model>
         
