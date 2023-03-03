@@ -36,14 +36,14 @@
       <div>ZICA AR...</div>
     </div>
     
-    <a-scene mindar-image="https://cdn.glitch.global/622e7010-5629-44bd-ab9b-fdc18c327eac/targets%20(2).mind?v=1677803898217" 
+    <a-scene mindar-image="imageTargetSrc:https://cdn.glitch.global/3fa4a16f-4f3b-4a0e-b959-ce65bca792dd/targets%20(1).mind?v=1677193285803" 
             
              
              vr-mode-ui="enabled: false" 
              device-orientation-permission-ui="enabled: false" >
       
       <a-assets>
-        <img id="card" src="https://cdn.glitch.global/622e7010-5629-44bd-ab9b-fdc18c327eac/targets%20(2).mind?v=1677803898217" />
+        <img id="card" src="https://cdn.glitch.global/622e7010-5629-44bd-ab9b-fdc18c327eac/IMG_6501.jpg?v=1677803622322" />
         <a-asset-item id="avatarModel" src="https://cdn.glitch.global/622e7010-5629-44bd-ab9b-fdc18c327eac/BicAR.gltf?v=1677803565608"></a-asset-item>
       </a-assets>
 
@@ -59,7 +59,12 @@
                  width="1" 
                  rotation="0 0 0">
         </a-plane>
-        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+        <a-gltf-model rotation="0 0 0 " 
+                      position="0 0 0.1" 
+                      scale="0.005 0.005 0.005" 
+                      src="#avatarModel" 
+                      ></a-gltf-model>
+        
       </a-entity>
         <a-entity camera> </a-entity>
     </a-scene>
